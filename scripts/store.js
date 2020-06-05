@@ -2,11 +2,17 @@ import item from './item.js';
 
 // const foo = 'bar';
 //
+
+// const store = {
+//   items: [],
+//   hideCheckedItems: false
+// }
+
 const items = [];
 let hideCheckedItems = false;
 
 const findById = function(id) {
-  return store.items.find(item => item.id === id);
+  return items.find(item => item.id === id);
 }
 
 const addItem = function(name) {
@@ -21,14 +27,14 @@ const addItem = function(name) {
 
 const findAndToggleChecked = function (id) {
   const result = findById(id);
-  this.items.result.checked = !this.items.result.checked;
+  result.checked = !result.checked;
 };
 
 const findAndUpdateName = function (id, newName) {
   try {
     item.validateName(newName);
     const result = findById(id);
-    this.items.result.name = newName;
+    result.name = newName;
   } catch(error) {
       console.log(`Cannot add item: ${error.message}`);
   }
@@ -36,7 +42,11 @@ const findAndUpdateName = function (id, newName) {
 
 const findAndDelete = function(id) {
   const index = this.items.findIndex(item => item.id == id);
-  this.items.splice(i, 1);
+  this.items.splice(index, 1);
+}
+
+const toggleCheckedFilter = function() {
+  this.hideCheckedItems = !this.hideCheckedItems;
 }
 
 export default {
@@ -47,4 +57,5 @@ export default {
   findAndToggleChecked,
   findAndUpdateName,
   findAndDelete,
+  toggleCheckedFilter,
 };

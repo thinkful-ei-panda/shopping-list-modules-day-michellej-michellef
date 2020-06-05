@@ -10,7 +10,7 @@ const validateName = function (name) {
 const create = function (name) {
   return {
     id: cuid(),
-    name,
+    name: name,
     checked: false
   };
 };
